@@ -29,12 +29,12 @@ public class Empresa extends Dao {
     private String descricao;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "empresa", targetEntity = Organograma.class, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "empresa")
     private Set<Organograma> organogramas;
 
     public void salvar() {
         iniciarOperacao();
-        this.setId(getSequence(this.getDescricao()));
+        this.setId(sequence());
         session.save(this);
         finalizarOperacao();
     }
@@ -65,5 +65,20 @@ public class Empresa extends Dao {
         Empresa empresa = session.createQuery("SELECT a FROM Empresa a Where a.nome ='" + this.nome + "'", Empresa.class).getResultList().get(0);
         finalizarOperacao();
         return empresa;
+    }
+
+    public Empresa findById() {
+        iniciarOperacao();
+        try {
+            Empresa empresa = session
+                    .createQuery("SELECT a FROM Empresa a Where a.id ='" + this.id + "'", Empresa.class)
+                    .getSingleResult();
+            return empresa;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        } finally {
+            finalizarOperacao();
+        }
     }
 }

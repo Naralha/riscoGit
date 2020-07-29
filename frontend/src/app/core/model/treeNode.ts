@@ -1,7 +1,8 @@
-import { Funcionario } from 'src/app/core/model/funcionario';
+import { Employee } from './employee';
+
 export interface TreeNode {
   id: number,
   text: string,
   parent: number,
-  employees: Funcionario[]
+  employees: Employee[]
 }

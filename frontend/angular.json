@@ -31,15 +31,17 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-toastr/toastr.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/jstree-bootstrap-theme/dist/themes/proton/style.min.css"
+              "node_modules/jstree-bootstrap-theme/dist/themes/proton/style.min.css",
+              "node_modules/roboto-fontface/css/roboto/roboto-fontface.css",
+              "src/app/core/lib/picklist/pickList.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/jstree/dist/jstree.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/@fortawesome/fontawesome-free/js/all.min.js"
+              "node_modules/feather-icons/dist/feather.min.js",
+              "src/app/core/lib/picklist/pickList.js"
             ]
           },
           "configurations": {

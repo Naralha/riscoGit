@@ -1,36 +1,40 @@
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './modules/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: 'organograma',
-      loadChildren: () =>
-      import('./organograma/organograma.module')
-      .then(m => m.OrganogramaModule)
-       // canActivate: [AuthGuardOrganograma],
-      // canActivateChild: [OrganogramaGuard]
+  {
+    path: 'processo',
+    loadChildren: () =>
+      import('./modules/processo/processo.module')
+        .then(m => m.ProcessoModule)
+    // canActivate: [AuthGuardProcesso],
+    // canActivateChild: [ProcessoGuard]
   },
-  { path: 'funcionarios',
-      loadChildren: () =>
-      import('./funcionario/funcionario.module')
-      .then(m => m.FuncionarioModule)
-       // canActivate: [AuthGuardOrganograma],
-      // canActivateChild: [OrganogramaGuard]
+  {
+    path: 'organograma',
+    loadChildren: () =>
+      import('./modules/organograma/organograma.module')
+        .then(m => m.OrganogramaModule)
+    // canActivate: [AuthGuardOrganograma],
+    // canActivateChild: [OrganogramaGuard]
   },
-  { path: 'empresas',
-      loadChildren: () =>
-       import('./empresa/empresa.module')
-       .then(m => m.EmpresaModule)
-      // canActivate: [AuthGuardEmpresa],
-      // canActivateChild: [EmpresaGuard]
+  {
+    path: 'funcionarios',
+    loadChildren: () =>
+      import('./modules/funcionario/funcionario.module')
+        .then(m => m.FuncionarioModule)
+    // canActivate: [AuthGuardOrganograma],
+    // canActivateChild: [OrganogramaGuard]
   },
-  { path: 'funcionario',
-      loadChildren: () =>
-       import('./funcionario/funcionario.module')
-       .then(m => m.FuncionarioModule)
-      // canActivate: [AuthGuardFuncionario],
-      // canActivateChild: [FuncionarioGuard]
+  {
+    path: 'empresas',
+    loadChildren: () =>
+      import('./modules/empresa/empresa.module')
+        .then(m => m.EmpresaModule)
+    // canActivate: [AuthGuardEmpresa],
+    // canActivateChild: [EmpresaGuard]
   },
   { path: 'home', component: HomeComponent },
   {

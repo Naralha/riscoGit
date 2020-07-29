@@ -1,7 +1,11 @@
 export const Messages = {
   sucesso: `Sucesso!`,
   erro: `Erro!`,
-  cadastroSucesso: `cadastrado(a) com sucesso!`,
-  alteradoSucesso: `alterado com sucesso!`,
-  cadastroErro: `Erro ao cadastrar`
+  orgRegisterSuccess: `Organograma cadastrado com sucesso!`,
+  orgRegisterError: `Erro ao cadastrar organograma!`,
+  orgUpdateSuccess: `Organograma alterado com sucesso!`,
+  orgUpdateError: `Erro ao alterar organograma!`,
+
+  processCreateSuccess: 'Processo cadastrado com sucesso!',
+  processCreateError: 'Erro ao cadastrar o processo!'
 }

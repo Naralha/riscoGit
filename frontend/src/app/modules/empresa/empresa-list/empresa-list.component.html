@@ -1,0 +1,14 @@
+<div>
+  <table class="table" style="width:100%" *ngIf="companies$ | async as companies">
+    <tr>
+      <th>Nome</th>
+      <th>Descrição</th>
+    </tr>
+    <tr *ngFor="let company of companies">
+      <td>{{ company.nome }}</td>
+      <td>{{ company.descricao }}</td>
+      <td><button title="Detalhes" class="btn btn-info" [routerLink]="[company.id]">+</button></td>
+    </tr>
+  </table>
+</div>
+

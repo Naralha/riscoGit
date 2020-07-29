@@ -11,7 +11,11 @@ import { ModalEmployeeListComponent } from './modal-employee-list/modal-employee
     CampoControlErroComponent,
     ModalEmployeeListComponent],
   imports: [
+    FormsModule,
     CommonModule,
+    ReactiveFormsModule,
+  ],
+  providers: [
   ],
   exports: [
     FormDebugComponent,

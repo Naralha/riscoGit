@@ -18,7 +18,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     constructor(private spinner: SpinnerService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        this.spinner.showSpinner();
+           this.spinner.showSpinner();
         // const token: string = localStorage.getItem('token');
 
         // if (token) {
@@ -35,7 +35,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
           .pipe(
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
-                  this.spinner.hideSpinner();
+                    this.spinner.hideSpinner();
                //   console.log('event--->>>', event);
                 }
                 return event;

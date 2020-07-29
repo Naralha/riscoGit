@@ -5,14 +5,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import camada.entidade.Funcionario;
 
@@ -31,7 +24,16 @@ public class FuncionarioEndpoint {
 		
 		return new ResponseEntity<List<Funcionario>>(listaFuncionario, HttpStatus.OK);
 	}
-	
+
+	@GetMapping(value = "/{idEmpresa}")
+	public ResponseEntity<List<Funcionario>> findAllByEmpresaId(@PathVariable long idEmpresa) {
+		Funcionario funcionario = new Funcionario();
+		List<Funcionario> listaFuncionario = new ArrayList<>();
+		listaFuncionario.addAll(funcionario.findAllByIdEmpresa(idEmpresa));
+
+		return new ResponseEntity<>(listaFuncionario, HttpStatus.OK);
+	}
+
 	@PostMapping
 	public ResponseEntity<Funcionario> insert(@RequestBody Funcionario funcionario){
 

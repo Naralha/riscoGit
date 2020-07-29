@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import camada.entidade.Empresa;
@@ -58,12 +56,23 @@ public class EmpresaEndpoint {
 		return new ResponseEntity<Empresa>(empresa, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/{nome}")
-	public ResponseEntity<Empresa> findByNome(@PathVariable(name = "nome") String nome){
+//	@GetMapping(value = "/{nome}")
+//	public ResponseEntity<Empresa> findByNome(@PathVariable(name = "nome") String nome){
+//		Empresa empresa = new Empresa();
+//		empresa.setNome(nome);
+//
+//
+//		return new ResponseEntity<Empresa>(empresa.findByNome(), HttpStatus.OK);
+//	}
+
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<?> findById(@PathVariable long id) {
 		Empresa empresa = new Empresa();
-		empresa.setNome(nome);
-		
-		
-		return new ResponseEntity<Empresa>(empresa.findByNome(), HttpStatus.OK);
+		empresa.setId(id);
+		empresa = empresa.findById();
+		if (empresa == null) {
+			return new ResponseEntity<>("Empresa não encontrada", HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(empresa, HttpStatus.OK);
 	}
 }

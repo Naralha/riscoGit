@@ -1,34 +1,92 @@
 <!-- Spinner global -->
-<ngx-spinner
-size = "default"
-type = "ball-clip-rotate"
-[fullScreen] = "true"
->
+<ngx-spinner size="default" type="ball-clip-rotate" [fullScreen]="true">
 </ngx-spinner>
 
-  <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link active" [routerLink]="['home']">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['empresas']">Empresas</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['funcionarios']">Funcionários</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['organograma']">Organograma</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#" aria-current="page">Login</a>
-    </li>
-  </ul>
+<div class="wrapper">
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Risco Compliance</h3>
+    </div>
 
-<br/><br/>
-<div class="container">
-  <alert *ngIf="showPendingChanges()" type="warning">
-    <strong>Opa!</strong> parece que você tem alterações pendentes a serem salvas.
-  </alert>
-  <br>
-  <router-outlet></router-outlet>
+    <ul class="list-unstyled components">
+      <li class="active">
+        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+        <ul class="collapse list-unstyled" id="pageSubmenu">
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['home']">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['empresas/lista']">Empresas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['funcionarios']">Funcionários</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['organograma/tree']">Organograma</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['processo']">Processo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" aria-current="page">Login</a>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Administração</a>
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <a href="#">Cadastrar usuário</a>
+          </li>
+          <li>
+            <a href="#">Adm 2</a>
+          </li>
+          <li>
+            <a href="#">Adm 3</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div id="content">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+
+        <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <span>=</span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+                <!-- <li class="nav-item active">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Page</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <div class="container">
+      <alert *ngIf="showPendingChanges()" type="warning">
+        <strong>Opa!</strong> parece que você tem alterações pendentes a serem salvas.
+      </alert>
+      <br>
+    
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
+

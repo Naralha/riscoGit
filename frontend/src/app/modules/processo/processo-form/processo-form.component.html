@@ -1,0 +1,64 @@
+<form [formGroup]="formProcesso" (ngSubmit)="onSubmit()">
+  <!-- Row -->
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="name">Macroprocesso</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="name">Processo</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="name">Objetivo</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+    </div>
+  </div>
+  <!-- Fim Row -->
+
+  <!-- Row -->
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="name">Saídas</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+    </div>
+
+    <div class="form-group col-md-8">
+      <label>&nbsp;</label>
+      <dual-list [source]="source" [format]="format"></dual-list>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="name">Clientes Externos</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+    </div>
+  </div>
+  <!-- Fim Row -->
+
+  <!-- Row -->
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="name">Entradas</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+    </div>
+
+    <div class="form-group col-md-8">
+      <label>&nbsp;</label>
+      <dual-list [source]="source" [format]="format"></dual-list>
+    </div>
+
+    <div class="form-group col-md-2">
+      <label for="name">Fornecedores Externos</label>
+      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+    </div>
+  </div>
+  <!-- Fim Row -->
+
+  <button class="btn btn-info" type="submit">Salvar</button>
+
+  <app-form-debug [form]="formProcesso"></app-form-debug>
+</form>
+
+<router-outlet></router-outlet>

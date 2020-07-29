@@ -1,0 +1,83 @@
+<br/><br/>
+<h2>Organograma</h2>
+<h3>Empresa: {{ company.name }}</h3>
+<br/><br/>
+
+<form [formGroup]="formOrganograma" (ngSubmit)="onSubmit()">
+
+    <!-- Nó Pai-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="nome">Área Superior</label>
+      <div class="col-sm-6">
+        <select class="form-control" formControlName="orgPai">
+          <option>Selecione...</option>
+          <!-- <option *ngFor="let item of noPrincipalLista" [value]="item">{{item}}</option> -->
+        </select>
+      </div>
+      <!-- <button type="button" class="btn-dark" data-toggle="modal" data-target="#modalNovoSetor">
+        Novo
+      </button> -->
+    </div>
+
+    <!-- Nó Filho-->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="nome">Nome do Setor</label>
+      <div class="col-sm-6">
+        <input class="form-control" type="text" formControlName="nome" id="nome" placeholder="Setor">
+      </div>
+    </div>
+
+    <!-- Descrição -->
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="nome">Descrição</label>
+      <div class="col-sm-6">
+        <textarea class="form-control" type="text" formControlName="descricao" id="nome" placeholder="Informações sobre o setor"></textarea>
+      </div>
+    </div>
+
+    <!-- Botão incluir funcionário -->
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button data-toggle="modal" data-target="#modalFuncionarios">Incluir funcionários</button>
+      </div>
+    </div>
+
+    <!-- Botão Salvar -->
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit">Salvar</button>
+      </div>
+    </div>
+  <!-- <app-form-debug [form]="formEmpresa"></app-form-debug> -->
+</form>
+
+<!-- Modal Funcionários -->
+<div class="modal fade" id="modalFuncionarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Lista de funcionários</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p *ngIf="!employees$">Não existe funcionários cadastrados nesta empresa.</p>
+        <table style="width:100%" *ngIf="employees$ | async as employees">
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+          </tr>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td><input type="checkbox"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button style="width: 80px;" data-dismiss="modal" aria-label="Close" class="btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
