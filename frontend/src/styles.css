@@ -1,8 +1,19 @@
-.vakata-context > a {
-  border-radius: 4px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Bootstrap edit */
+.card, .btn, .form-control { border-radius: 0; }
+
+.btn:focus {
+   box-shadow: none;
 }
 
-.vakata-context {
-  border-radius: 4px;
-  border: 1px;
+.btn-info {
+    background-color: #6d7fcc!important;
+    border-style: none!important;
 }
+
+.btn-primary {
+   background-color: #6d7fcc!important;
+   border-style: none!important;
+}
+

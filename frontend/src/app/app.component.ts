@@ -15,6 +15,13 @@ export class AppComponent implements OnInit, AfterViewInit {
   onActiveSidebar() {
     $('#sidebarCollapse').on('click', function () {
       $('#sidebar').toggleClass('active');
+      if($("#sidebarCollapse svg").hasClass('feather-arrow-left')) {
+        $("#sidebarCollapse svg.feather.feather-arrow-left")
+        .replaceWith(Feather.icons['arrow-right'].toSvg());
+      } else {
+        $("#sidebarCollapse svg.feather.feather-arrow-right")
+        .replaceWith(Feather.icons['arrow-left'].toSvg());
+      }
     });
   }
 

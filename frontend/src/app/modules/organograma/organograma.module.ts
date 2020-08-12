@@ -5,7 +5,6 @@ import { SharedModule } from './../../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { OrgChartModule } from 'angular-org-chart';
 import { OrganogramaTreeComponent } from './organograma-tree/organograma-tree.component';
 import { OrganogramaDetailComponent } from './organograma-detail/organograma-detail.component';
 import { OrganogramaModalFuncionariosComponent } from './organograma-modal-funcionarios/organograma-modal-funcionarios.component';
@@ -24,7 +23,6 @@ import { OrganogramaModalFuncionariosComponent } from './organograma-modal-funci
     ReactiveFormsModule,
     OrganogramaRoutingModule,
     SharedModule,
-    OrgChartModule
   ],
   providers: [],
 })

@@ -3,7 +3,7 @@ import { SpinnerService } from './../../../shared/services/spinner.service';
 import { tap, take, catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Observable, empty } from 'rxjs';
-import { EmpresaService } from '../empresa.service';
+import { EmpresaService } from '../../../core/services/empresa.service';
 import { Company } from '../../../core/model/company';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 

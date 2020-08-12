@@ -1,6 +1,6 @@
 import { NotificacaoService } from './../../../shared/services/notificacao.service';
 import { SpinnerService } from './../../../shared/services/spinner.service';
-import { EmpresaService } from './../empresa.service';
+import { EmpresaService } from '../../../core/services/empresa.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable, empty } from 'rxjs';
 import { Company } from '../../../core/model/company';

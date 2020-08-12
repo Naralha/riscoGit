@@ -1,6 +1,7 @@
 import { HomeComponent } from './modules/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthComponent } from './modules/auth/auth.component';
 
 
 const routes: Routes = [
@@ -36,12 +37,10 @@ const routes: Routes = [
     // canActivate: [AuthGuardEmpresa],
     // canActivateChild: [EmpresaGuard]
   },
+  { path: 'login', component: AuthComponent},
   { path: 'home', component: HomeComponent },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  }
+  { path: '**', pathMatch: 'full', redirectTo: '/home' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { DadosCompartilhadosService } from './../../../core/services/dados-compartilhados.service';
-import { FuncionarioService } from './../funcionario.service';
+import { FuncionarioService } from '../../../core/services/funcionario.service';
 import { SpinnerService } from './../../../shared/services/spinner.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NotificacaoService } from 'src/app/shared/services/notificacao.service';

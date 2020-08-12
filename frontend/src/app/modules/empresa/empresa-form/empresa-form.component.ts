@@ -1,6 +1,6 @@
 
 import { SpinnerService } from './../../../shared/services/spinner.service';
-import { EmpresaService } from './../empresa.service';
+import { EmpresaService } from '../../../core/services/empresa.service';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { NotificacaoService } from 'src/app/shared/services/notificacao.service';

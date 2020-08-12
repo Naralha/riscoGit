@@ -2,7 +2,7 @@ import { Messages } from './../../shared/message';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Company } from '../../core/model/company';
-import { OrganogramaService } from './organograma.service';
+import { OrganogramaService } from '../../core/services/organograma.service';
 import { SpinnerService } from './../../shared/services/spinner.service';
 import { NotificacaoService } from 'src/app/shared/services/notificacao.service';
 import { Component, OnInit } from '@angular/core';

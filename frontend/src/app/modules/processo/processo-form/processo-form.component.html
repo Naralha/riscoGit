@@ -3,17 +3,17 @@
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="name">Macroprocesso</label>
-      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
     </div>
 
     <div class="form-group col-md-3">
       <label for="name">Processo</label>
-      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
     </div>
 
     <div class="form-group col-md-6">
       <label for="name">Objetivo</label>
-      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
     </div>
   </div>
   <!-- Fim Row -->
@@ -22,17 +22,17 @@
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="name">Saídas</label>
-      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
     </div>
 
     <div class="form-group col-md-8">
       <label>&nbsp;</label>
-      <dual-list [source]="source" [format]="format"></dual-list>
+      <dual-list [format]="format" [source]="source" [(destination)]="confirmed"></dual-list>
     </div>
 
     <div class="form-group col-md-2">
       <label for="name">Clientes Externos</label>
-      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
     </div>
   </div>
   <!-- Fim Row -->
@@ -41,17 +41,17 @@
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="name">Entradas</label>
-      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
     </div>
 
     <div class="form-group col-md-8">
       <label>&nbsp;</label>
-      <dual-list [source]="source" [format]="format"></dual-list>
+      <dual-list [format]="format" [source]="source" [(destination)]="confirmed"></dual-list>
     </div>
 
     <div class="form-group col-md-2">
       <label for="name">Fornecedores Externos</label>
-      <input type="text" class="form-control" formControlName="name" id="name" placeholder="Nome">
+      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
     </div>
   </div>
   <!-- Fim Row -->

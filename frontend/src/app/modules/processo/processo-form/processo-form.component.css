@@ -1,0 +1,16 @@
+:host ::ng-deep .point-right:after {
+	background-image: url("/assets/icons/chevron-right.svg")!important;
+	content:""!important;
+	margin-left: 10px;
+}
+
+:host ::ng-deep .point-left::before {
+	background-image: url("/assets/icons/chevron-left.svg")!important;
+	content:""!important;
+	margin-right: 15px;
+}
+
+:host ::ng-deep div.record-picker::-webkit-scrollbar-thumb {
+	background: #6d7fcc!important;
+	border-style: none!important;
+}

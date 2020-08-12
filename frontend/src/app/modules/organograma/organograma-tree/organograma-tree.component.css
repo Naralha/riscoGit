@@ -2,3 +2,11 @@ div {
   height: 400px;
 }
 
+/* JS Tree edit */
+/deep/.jstree-proton .jstree-clicked {
+  background-color: #6d7fcc;
+}
+ 
+/deep/.jstree-proton .jstree-hovered {
+  background-color: #6d7fcc;
+}
