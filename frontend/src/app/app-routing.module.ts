@@ -14,6 +14,14 @@ const routes: Routes = [
     // canActivateChild: [ProcessoGuard]
   },
   {
+    path: 'macroProcesso',
+    loadChildren: () =>
+      import('./modules/macro-processo/macro-processo.module')
+        .then(m => m.MacroProcessoModule)
+    // canActivate: [AuthGuardOrganograma],
+    // canActivateChild: [OrganogramaGuard]
+  },
+  {
     path: 'organograma',
     loadChildren: () =>
       import('./modules/organograma/organograma.module')

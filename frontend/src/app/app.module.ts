@@ -13,11 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeComponent } from './modules/home/home.component';
+import { MacroProcessoListComponent } from './modules/macro-processo-list/macro-processo-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    MacroProcessoListComponent,
   ],
   imports: [
     BrowserModule,
