@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProcessoComponent } from './processo.component';
+import { Router } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ProcessoComponent', () => {
   let component: ProcessoComponent;
@@ -8,7 +13,9 @@ describe('ProcessoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProcessoComponent ]
+      declarations: [ ProcessoComponent ],
+      imports: [RouterTestingModule],
+      providers: [FormBuilder]
     })
     .compileComponents();
   }));
@@ -16,6 +23,7 @@ describe('ProcessoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProcessoComponent);
     component = fixture.componentInstance;
+    component.showNewProcessButton = true;
     fixture.detectChanges();
   });
 

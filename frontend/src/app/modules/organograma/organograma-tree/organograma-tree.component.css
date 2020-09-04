@@ -1,12 +1,18 @@
-div {
-  height: 400px;
+.organograma-box {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.organograma-detail-box {
+  border-radius: 10px;
+  padding: 5%;
 }
 
 /* JS Tree edit */
-/deep/.jstree-proton .jstree-clicked {
-  background-color: #6d7fcc;
+:host ::ng-deep .jstree-proton .jstree-clicked {
+  background-color: #df8f2e;
 }
- 
-/deep/.jstree-proton .jstree-hovered {
-  background-color: #6d7fcc;
+
+:host ::ng-deep .jstree-proton .jstree-hovered {
+  background-color: #df8f2e;
 }

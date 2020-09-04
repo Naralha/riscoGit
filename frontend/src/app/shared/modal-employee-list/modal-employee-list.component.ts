@@ -4,15 +4,23 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SpinnerService } from './../services/spinner.service';
 import { Company } from '../../core/model/company';
 import { Observable, empty } from 'rxjs';
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+  OnDestroy,
+  HostListener,
+} from '@angular/core';
 
 @Component({
   selector: 'app-modal-employee-list',
   templateUrl: './modal-employee-list.component.html',
-  styleUrls: ['./modal-employee-list.component.css']
+  styleUrls: ['./modal-employee-list.component.css'],
 })
-export class ModalEmployeeListComponent implements OnInit, OnDestroy {
-
+export class ModalEmployeeListComponent implements OnInit {
   @Input() employeesList: Employee[];
   @Input() companyName: string;
   @Input() companyId: number;
@@ -26,29 +34,30 @@ export class ModalEmployeeListComponent implements OnInit, OnDestroy {
   constructor(
     public bsModalRef: BsModalRef,
     private spinnerService: SpinnerService
-  ) { }
+  ) {}
 
   onPassCallBack() {
     this.passEntry.emit(this.employeeListReturn);
   }
 
   onAddEmployeeToReturnList(e, employee: Employee) {
-    this.employeeListReturn = this.employeeListReturn
-      .map(item => {
-        if (item.id == employee.id) {
-          if (e.target.checked) {
-            item.idSectorCompany = this.orgNodeId;
-          } else {
-            item.idSectorCompany = null;
-          }
+    this.employeeListReturn = this.employeeListReturn.map((item) => {
+      if (item.id == employee.id) {
+        if (e.target.checked) {
+          item.idSectorCompany = this.orgNodeId;
+        } else {
+          item.idSectorCompany = null;
         }
-        return item;
-      });
+      }
+      return item;
+    });
   }
 
   onDisableEmployee(idSectorCompany: number) {
-    if (idSectorCompany != null && idSectorCompany == this.orgNodeId
-      || idSectorCompany == null) {
+    if (
+      (idSectorCompany != null && idSectorCompany == this.orgNodeId) ||
+      idSectorCompany == null
+    ) {
       return false;
     } else {
       return true;
@@ -60,10 +69,7 @@ export class ModalEmployeeListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log('aqui ashais', this.employeeListReturn);
     this.employeeListReturn = this.employeesList;
-    this.spinnerService.hideSpinner();
   }
-
-  @HostListener('unloaded')
-  ngOnDestroy(): void { }
 }

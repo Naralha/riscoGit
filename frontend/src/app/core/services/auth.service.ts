@@ -7,7 +7,9 @@ import { map, catchError } from 'rxjs/operators';
 import { User } from '../model/User';
 import { environment } from 'src/environments/environment';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
     private readonly API = `${environment.API}/auth`;
     isAuthenticated = false;

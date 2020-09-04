@@ -1,15 +1,72 @@
-<div class="row">
-  <div class="col">
-    <div class="border"  id="organogramaTree"></div>
-  </div>
-  <div class="col">
-    <div class="border d-flex justify-content-center">
-      <router-outlet></router-outlet>
-      <i data-feather="menu"></i>
-      <i data-feather="plus-circle"></i>
-    </div>
+<div *ngIf="!treeData">
+  <div>Empresa {{ company.name }} ainda não possui organograma cadastrado.</div>
+  <br />
+  <div>
+    <button class="btn btn-rc-orange">Cadastrar organograma</button>
   </div>
 </div>
 
-<button class="btn btn-info" (click)="onSave()">Salvar alterações</button>
+<div>
+  <h2>Organograma</h2>
+  <p>{{ company.name }}</p>
+  <br /><br />
+  <div class="row">
+    <div class="col">
+      <div
+        class="border organograma-box"
+        #organogramaTree
+        id="organogramaTree"
+      ></div>
+    </div>
+    <div class="col">
+      <div class="border d-flex justify-content-center organograma-detail-box">
+        <div class="col">
+          <h2>{{ organogramaDetails?.name }}</h2>
 
+          <p>ID: {{ organogramaDetails?.id }}</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sit
+            amet nunc scelerisque, aliquam sapien non, lobortis tellus.
+            Vestibulum leo nunc, lacinia vitae odio vel, ullamcorper egestas
+            orci. Cras consectetur arcu orci, vel venenatis massa lobortis sed.
+            Ut ullamcorper, mauris vitae posuere eleifend, dui quam pulvinar
+            odio, at vehicula sem tortor in purus.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br /><br />
+
+  <button class="btn btn-rc-orange" (click)="onSave()">
+    Salvar alterações
+  </button>
+  <span>&nbsp;&nbsp;</span>
+  <button class="btn btn-info" (click)="openModalConfirm(template)">
+    Descartar alterações
+  </button>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h5 class="modal-title pull-left">Deseja descartar as alterações?</h5>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="bsModalRef.hide()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-footer">
+    <button
+      class="btn btn-danger"
+      (click)="bsModalRef.hide(); onDiscardChanges()"
+    >
+      Confirmar
+    </button>
+    <button class="btn btn-info" (click)="bsModalRef.hide()">Cancelar</button>
+  </div>
+</ng-template>

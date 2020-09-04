@@ -1,5 +1,12 @@
-<h2>Organograma</h2>
-<p>{{company.name}}</p>
-<br><br>
+<div
+  @myInsertRemoveTrigger
+  *ngIf="showAlertPendingChanges"
+  class="alert-transition alert alert-warning alert-dismissible fade show"
+  role="alert"
+>
+  <strong>*</strong> Você tem alterações pendentes a serem salvas.
+</div>
 
-<router-outlet></router-outlet>
+<div *ngIf="treeData">
+  <app-organograma-tree [treeData]="treeData"></app-organograma-tree>
+</div>

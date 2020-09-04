@@ -1,16 +1,72 @@
 :host ::ng-deep .point-right:after {
-	background-image: url("/assets/icons/chevron-right.svg")!important;
-	content:""!important;
-	margin-left: 10px;
+  background-image: url("/assets/icons/chevron-right.svg") !important;
+  content: "" !important;
+  margin-left: 10px;
 }
 
 :host ::ng-deep .point-left::before {
-	background-image: url("/assets/icons/chevron-left.svg")!important;
-	content:""!important;
-	margin-right: 15px;
+  background-image: url("/assets/icons/chevron-left.svg") !important;
+  content: "" !important;
+  margin-right: 15px;
 }
 
 :host ::ng-deep div.record-picker::-webkit-scrollbar-thumb {
-	background: #6d7fcc!important;
-	border-style: none!important;
+  background: #ffa534 !important;
+  border-style: none !important;
+}
+
+:host ::ng-deep .selected {
+  color: #232129 !important;
+  background-color: #ffffff !important;
+}
+
+:host ::ng-deep .record-picker li:hover {
+  transition: 0.3s !important;
+  color: #232129 !important;
+  background-color: #fff !important;
+}
+
+#submitFormButton {
+  width: 200px;
+}
+
+/*Buttons*/
+
+:host ::ng-deep button {
+  color: #212529;
+  background-color: #ffa534;
+  border-color: #ffa534;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.99rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
+
+:host ::ng-deep button:hover {
+  color: #212529;
+  background-color: #df8f2e;
+  border-color: #df8f2e;
+}
+
+:host ::ng-deep button:active {
+  color: #212529 !important;
+  background-color: #df8f2e !important;
+  border-color: #df8f2e !important;
+}
+
+:host ::ng-deep button:disabled {
+  color: #212529;
+  background-color: #df8f2e !important;
+  border-color: #df8f2e !important;
+}
+
+:host ::ng-deep button:focus {
+  color: #212529 !important;
+  background-color: #df8f2e !important;
+  border-color: #df8f2e !important;
+  box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5) !important;
+}
+
+:host ::ng-deep .btn-default {
+  margin-left: 17.5px;
 }

@@ -15,8 +15,8 @@ export class AuthComponent implements OnInit {
   errorMessage: string;
 
   constructor(
-    private formBuilder: FormBuilder,
     private authService: AuthService,
+    private formBuilder: FormBuilder,
     private router: Router) { }
 
   buildForm() {

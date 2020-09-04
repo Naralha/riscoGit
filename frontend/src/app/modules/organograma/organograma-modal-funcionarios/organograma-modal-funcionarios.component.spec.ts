@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OrganogramaModalFuncionariosComponent } from './organograma-modal-funcionarios.component';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 describe('OrganogramaModalFuncionariosComponent', () => {
   let component: OrganogramaModalFuncionariosComponent;
@@ -8,7 +9,8 @@ describe('OrganogramaModalFuncionariosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OrganogramaModalFuncionariosComponent ]
+      declarations: [ OrganogramaModalFuncionariosComponent ],
+      providers: [BsModalRef]
     })
     .compileComponents();
   }));
@@ -16,6 +18,8 @@ describe('OrganogramaModalFuncionariosComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OrganogramaModalFuncionariosComponent);
     component = fixture.componentInstance;
+    component.companyName = 'XPTO';
+    component.employeesList = [];
     fixture.detectChanges();
   });
 

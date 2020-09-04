@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmpresaComponent } from './empresa.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('EmpresaComponent', () => {
   let component: EmpresaComponent;

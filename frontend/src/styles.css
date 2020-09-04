@@ -1,19 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
-/* Bootstrap edit */
-.card, .btn, .form-control { border-radius: 0; }
-
-.btn:focus {
-   box-shadow: none;
+body {
+  font-family: "Roboto", serif !important;
 }
 
-.btn-info {
-    background-color: #6d7fcc!important;
-    border-style: none!important;
+.btn-rc-orange {
+  color: #212529;
+  background-color: #ffa534;
+  border-color: #ffa534;
 }
 
-.btn-primary {
-   background-color: #6d7fcc!important;
-   border-style: none!important;
+.btn-rc-orange:hover {
+  color: #212529;
+  background-color: #df8f2e;
+  border-color: #df8f2e;
 }
 
+.btn-rc-orange:active {
+  color: #212529 !important;
+  background-color: #df8f2e !important;
+  border-color: #df8f2e !important;
+}
+
+.btn-rc-orange:disabled {
+  color: #212529;
+  background-color: #df8f2e !important;
+  border-color: #df8f2e !important;
+}
+
+.btn-rc-orange:focus {
+  color: #212529 !important;
+  background-color: #df8f2e !important;
+  border-color: #df8f2e !important;
+  box-shadow: 0 0 0 0.2rem rgba(222, 170, 12, 0.5) !important;
+}
+
+.form-rc-div {
+  border-radius: 10px;
+  padding: 16px;
+  width: 100%;
+  border: 2px solid #232129;
+  align-items: center;
+}
+
+.form-control {
+  color: #fff;
+  background: #232129;
+  border: 2px solid #232129;
+}
+
+.form-control:focus {
+  color: #fff;
+  border-color: #ffa534;
+  background-color: #232129;
+  outline: none !important;
+  box-shadow: none;
+}

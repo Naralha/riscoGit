@@ -1,27 +1,46 @@
-<form [formGroup]="formEmpresa" (ngSubmit)="onSubmit()">
-  <div>
-    <div>
-      <label for="nome">Nome</label>
+<div class="form-rc-div">
+  <form [formGroup]="formEmpresa" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="nome"
+            id="macroprocess"
+            placeholder="Nome da empresa"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="cnpj"
+            id="process"
+            placeholder="CNPJ"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control form-control-sm"
+            formControlName="descricao"
+            id="process"
+            placeholder="Descrição da empresa"
+          />
+        </div>
+      </div>
+
+      <div class="col d-flex justify-content-center">
+        Formulário para cadastro de empresas.
+      </div>
     </div>
+    <br />
+    <br />
+    <button class="btn btn-rc-orange" type="submit">Salvar</button>
 
-    <div>
-      <input type="text" formControlName="nome"
-        id="nome" placeholder="Nome">
-     </div>
-  </div>
-
-  <div>
-    <div>
-      <label for="email">Descricao</label>
-    </div>
-    <div>
-      <input type="text" formControlName="descricao"
-        id="descricao" placeholder="Descrição">
-    </div>
-  </div>
-
-  <button type="submit" >Salvar</button>
-
-  <app-form-debug [form]="formEmpresa"></app-form-debug>
-</form>
-
+    <!-- <app-form-debug [form]="formEmpresa"></app-form-debug> -->
+  </form>
+</div>

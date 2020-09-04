@@ -1,58 +1,46 @@
-<!-- <div class="modal-header">
-  <h4 class="modal-title">Funcionários de {{ nameEmpresa }}</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Funcionários de {{ companyName }}</h4>
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+  >
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <table style="width:100%">
-      <tr>
-        <th>Nome</th>
-        <th>Função</th>
-        <th>E-mail</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let employee of employeeList">
-        <td>{{ employee.nome }}</td>
-        <td>{{ employee.descricao }}</td>
-        <td>{{ employee.email }}</td>
-        <td><input type="checkbox"></td>
-      </tr>
-    </table>
-  </div>
+  <table style="width: 100%" *ngIf="employeesList.length">
+    <tr>
+      <th>Nome</th>
+      <th>Função</th>
+      <th>E-mail</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let employee of employeesList">
+      <td>{{ employee.nome }}</td>
+      <td>{{ employee.descricao }}</td>
+      <td>{{ employee.email }}</td>
+      <td>
+        <input
+          type="checkbox"
+          [disabled]="onDisableEmployee(employee.organograma?.id)"
+          (change)="onAddEmployeeToReturnList($event, employee)"
+          [checked]="onEmployeeChecked(employee.organograma?.id)"
+        />
+      </td>
+    </tr>
+  </table>
+</div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss('cancel click')">Cancel</button>
-  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Ok click')">Salvar</button>
-</div> -->
-
-<div class="modal-header">
-    <h4 class="modal-title pull-left">Funcionários de {{ companyName }}</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <table style="width:100%" *ngIf="employeesList.length">
-      <tr>
-        <th>Nome</th>
-        <th>Função</th>
-        <th>E-mail</th>
-        <th></th>
-      </tr>
-      <tr *ngFor="let employee of employeesList">
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.description }}</td>
-        <td>{{ employee.email }}</td>
-        <td><input type="checkbox"
-           [disabled]="onDisableEmployee(employee.idSectorCompany)"
-           (change)="onAddEmployeeToReturnList($event, employee)"
-           [checked]="onEmployeeChecked(employee.idSectorCompany)">
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">Cancelar</button>
-    <button type="button" class="btn btn-default" (click)="onPassCallBack();bsModalRef.hide()">Salvar</button>
-  </div>
-  
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">
+    Cancelar
+  </button>
+  <button
+    type="button"
+    class="btn btn-default"
+    (click)="onPassCallBack(); bsModalRef.hide()"
+  >
+    Salvar
+  </button>
+</div>

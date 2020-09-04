@@ -1,64 +1,170 @@
-<form [formGroup]="formProcesso" (ngSubmit)="onSubmit()">
-  <!-- Row -->
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="name">Macroprocesso</label>
-      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
+<div class="form-rc-div" *ngIf="showForm" id="processoForm">
+  Formulário de processo
+  <br />
+  <br />
+  <br />
+  <form [formGroup]="formProcesso" (ngSubmit)="onSubmit()">
+    <!-- Row -->
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="macroprocess"
+          id="macroprocess"
+          placeholder="Macro Processo"
+        />
+      </div>
+
+      <div class="form-group col-md-3">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="process"
+          id="process"
+          placeholder="Processo"
+        />
+      </div>
+
+      <div class="form-group col-md-6">
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="objective"
+          id="objective"
+          placeholder="Objetivo"
+        />
+      </div>
     </div>
+    <!-- Fim Row -->
 
-    <div class="form-group col-md-3">
-      <label for="name">Processo</label>
-      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
+    <!-- Row -->
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label>&nbsp;</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="outputs"
+          id="outputs"
+          placeholder="Saídas"
+        />
+      </div>
+
+      <div class="form-group col-md-8">
+        <label>Clientes internos</label>
+        <dual-list
+          [format]="format"
+          [source]="source"
+          [(destination)]="confirmed"
+        ></dual-list>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label>&nbsp;</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="externalClientes"
+          id="externalClientes"
+          placeholder="Clientes Externos"
+        />
+      </div>
     </div>
+    <!-- Fim Row -->
 
-    <div class="form-group col-md-6">
-      <label for="name">Objetivo</label>
-      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
+    <br /><br />
+
+    <!-- Row -->
+    <div class="form-row">
+      <div class="form-group col-md-2">
+        <label>&nbsp;</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="inputs"
+          id="inputs"
+          placeholder="Entradas"
+        />
+      </div>
+
+      <div class="form-group col-md-8">
+        <label>Fornecedores internos</label>
+        <dual-list
+          [format]="format"
+          [source]="source"
+          [(destination)]="confirmed"
+        ></dual-list>
+      </div>
+
+      <div class="form-group col-md-2">
+        <label>&nbsp;</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="externalClientes"
+          id="externalClientes"
+          placeholder="Fornecedores Externos"
+        />
+      </div>
     </div>
-  </div>
-  <!-- Fim Row -->
+    <!-- Fim Row -->
 
-  <!-- Row -->
-  <div class="form-row">
-    <div class="form-group col-md-2">
-      <label for="name">Saídas</label>
-      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
+    <!-- Row -->
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label>&nbsp;</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="limitrofeStart"
+          id="limitrofeStart"
+          placeholder="Limítrofe inicial"
+        />
+      </div>
+
+      <div class="form-group col-md-3">
+        <label>&nbsp;</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="limitrofeEnd"
+          id="limitrofeEnd"
+          placeholder="Limítrofe final"
+        />
+      </div>
+
+      <div class="form-group col-md-3">
+        <label>&nbsp;</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="internalCompliance"
+          id="internalCompliance"
+          placeholder="Compliance interno"
+        />
+      </div>
+
+      <div class="form-group col-md-3">
+        <label>&nbsp;</label>
+        <input
+          type="text"
+          class="form-control form-control-sm"
+          formControlName="externalCompliance"
+          id="externalCompliance"
+          placeholder="Compliance externo"
+        />
+      </div>
     </div>
+    <!-- Fim Row -->
 
-    <div class="form-group col-md-8">
-      <label>&nbsp;</label>
-      <dual-list [format]="format" [source]="source" [(destination)]="confirmed"></dual-list>
-    </div>
+    <br />
+    <button id="submitFormButton" class="btn btn-primary" type="submit">
+      Salvar
+    </button>
 
-    <div class="form-group col-md-2">
-      <label for="name">Clientes Externos</label>
-      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
-    </div>
-  </div>
-  <!-- Fim Row -->
-
-  <!-- Row -->
-  <div class="form-row">
-    <div class="form-group col-md-2">
-      <label for="name">Entradas</label>
-      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
-    </div>
-
-    <div class="form-group col-md-8">
-      <label>&nbsp;</label>
-      <dual-list [format]="format" [source]="source" [(destination)]="confirmed"></dual-list>
-    </div>
-
-    <div class="form-group col-md-2">
-      <label for="name">Fornecedores Externos</label>
-      <input type="text" class="form-control form-control-sm" formControlName="name" id="name" placeholder="Nome">
-    </div>
-  </div>
-  <!-- Fim Row -->
-
-  <button class="btn btn-info" type="submit">Salvar</button>
-
-  <app-form-debug [form]="formProcesso"></app-form-debug>
-</form>
+    <!-- <app-form-debug [form]="formProcesso"></app-form-debug> -->
+  </form>
+</div>
 
 <router-outlet></router-outlet>

@@ -1,9 +1,9 @@
-import { DadosCompartilhadosService } from './../../../core/services/dados-compartilhados.service';
 import { FuncionarioService } from '../../../core/services/funcionario.service';
 import { SpinnerService } from './../../../shared/services/spinner.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NotificacaoService } from 'src/app/shared/services/notificacao.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { EmpresaService } from 'src/app/core/services/empresa.service';
 
 @Component({
   selector: 'app-funcionario-form',
@@ -21,7 +21,7 @@ export class FuncionarioFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private spinner: SpinnerService,
     private notify: NotificacaoService,
-    private dadosCompartilhadosService: DadosCompartilhadosService,
+    private empresaService: EmpresaService
   ) { }
 
   onSubmit() {
@@ -50,7 +50,7 @@ export class FuncionarioFormComponent implements OnInit {
   ngOnInit(): void {
 
     this.spinner.showSpinner();
-    this.dadosCompartilhadosService.getEmpresas().subscribe(
+    this.empresaService.list().subscribe(
       res => this.onInitEmpresasDisponiveis(res)
     );
 

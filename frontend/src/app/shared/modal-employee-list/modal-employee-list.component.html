@@ -13,9 +13,9 @@
       <th></th>
     </tr>
     <tr *ngFor="let employee of employeesList">
-      <td>{{ employee.name }}</td>
-      <td>{{ employee.description }}</td>
-      <td>{{ employee.email }}</td>
+      <td>{{ employee?.name }}</td>
+      <td>{{ employee?.description }}</td>
+      <td>{{ employee?.email }}</td>
       <td><input type="checkbox"
          [disabled]="onDisableEmployee(employee.idSectorCompany)"
          (change)="onAddEmployeeToReturnList($event, employee)"

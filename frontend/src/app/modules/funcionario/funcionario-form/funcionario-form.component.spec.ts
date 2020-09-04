@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FuncionarioFormComponent } from './funcionario-form.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { FormBuilder } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('FuncionarioFormComponent', () => {
   let component: FuncionarioFormComponent;
@@ -8,7 +12,9 @@ describe('FuncionarioFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FuncionarioFormComponent ]
+      declarations: [ FuncionarioFormComponent ],
+      imports: [HttpClientTestingModule, ToastrModule.forRoot()],
+      providers: [FormBuilder]
     })
     .compileComponents();
   }));

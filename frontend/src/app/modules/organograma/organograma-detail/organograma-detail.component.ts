@@ -1,6 +1,7 @@
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Funcionario } from 'src/app/core/model/Funcionario';
 
 @Component({
   selector: 'app-organograma-detail',
@@ -11,6 +12,7 @@ export class OrganogramaDetailComponent implements OnInit {
 
   idOrgNode: number;
   nameNode: string;
+  employees: Funcionario[];
   subscription: Subscription;
 
   constructor(private route: ActivatedRoute) { }
@@ -22,5 +24,13 @@ export class OrganogramaDetailComponent implements OnInit {
         this.nameNode = params['name'];
       }
     );
+
+    // this.subscription = this.route.data.subscribe(
+    //   (info: {funcionarios: Funcionario[]}) => {
+    //     console.log('Recebendo funcionários do resolver');
+    //     console.log(info.funcionarios)
+    //     this.employees = info.funcionarios;
+    //   }
+    // );
   }
 }

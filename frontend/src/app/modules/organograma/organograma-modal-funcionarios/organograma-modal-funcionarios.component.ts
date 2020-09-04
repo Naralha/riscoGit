@@ -4,20 +4,30 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SpinnerService } from '../../../shared/services/spinner.service';
 import { Company } from '../../../core/model/company';
 import { Observable, empty } from 'rxjs';
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, OnDestroy, HostListener } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+  OnDestroy,
+  HostListener,
+} from '@angular/core';
+import { Funcionario } from 'src/app/core/model/Funcionario';
+import { Organograma } from 'src/app/core/model/Organograma';
 
 @Component({
   selector: 'app-organograma-modal-funcionarios',
   templateUrl: './organograma-modal-funcionarios.component.html',
-  styleUrls: ['./organograma-modal-funcionarios.component.css']
+  styleUrls: ['./organograma-modal-funcionarios.component.css'],
 })
-export class OrganogramaModalFuncionariosComponent implements OnInit, OnDestroy {
-
-  @Input() employeesList: Employee[];
+export class OrganogramaModalFuncionariosComponent implements OnInit {
+  @Input() employeesList: Funcionario[];
   @Input() companyName: string;
   @Input() companyId: number;
   @Input() orgNodeId: number;
-  @Output() employeeListReturn: Employee[];
+  @Output() employeeListReturn: Funcionario[];
   @Output() passEntry: EventEmitter<any> = new EventEmitter();
   form: FormGroup;
 
@@ -26,29 +36,36 @@ export class OrganogramaModalFuncionariosComponent implements OnInit, OnDestroy 
   constructor(
     public bsModalRef: BsModalRef,
     private spinnerService: SpinnerService
-  ) { }
+  ) {}
 
   onPassCallBack() {
+    console.log(this.employeeListReturn);
     this.passEntry.emit(this.employeeListReturn);
   }
 
-  onAddEmployeeToReturnList(e, employee: Employee) {
-    this.employeeListReturn = this.employeeListReturn
-      .map(item => {
-        if (item.id == employee.id) {
-          if (e.target.checked) {
-            item.idSectorCompany = this.orgNodeId;
+  onAddEmployeeToReturnList(e, employee: Funcionario) {
+    this.employeeListReturn = this.employeeListReturn.map((item) => {
+      if (item.id == employee.id) {
+        if (e.target.checked) {
+          if(item.organograma) {
+            item.organograma.id = this.orgNodeId;
           } else {
-            item.idSectorCompany = null;
+            item.organograma = new Organograma();
+            item.organograma.id = this.orgNodeId;
           }
+        } else {
+          item.organograma.id = null;
         }
-        return item;
-      });
+      }
+      return item;
+    });
   }
 
   onDisableEmployee(idSectorCompany: number) {
-    if (idSectorCompany != null && idSectorCompany == this.orgNodeId
-      || idSectorCompany == null) {
+    if (
+      (idSectorCompany != null && idSectorCompany == this.orgNodeId) ||
+      idSectorCompany == null
+    ) {
       return false;
     } else {
       return true;
@@ -60,10 +77,7 @@ export class OrganogramaModalFuncionariosComponent implements OnInit, OnDestroy 
   }
 
   ngOnInit(): void {
+    console.log(this.employeesList);
     this.employeeListReturn = this.employeesList;
-    this.spinnerService.hideSpinner();
   }
-
-  @HostListener('unloaded')
-  ngOnDestroy(): void { }
 }

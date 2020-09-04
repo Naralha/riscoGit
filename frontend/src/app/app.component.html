@@ -4,47 +4,72 @@
 
 <div class="wrapper bg-light">
   <!-- Sidebar -->
-  <nav id="sidebar">
+  <nav
+    id="sidebar"
+    data-color="orange"
+    data-image="../../../assets/img/sidebar-5.jpg"
+  >
     <div class="sidebar-header">
       <h4>Risco Compliance</h4>
     </div>
 
     <ul class="list-unstyled components">
-      <li class="active">
-        <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Páginas</a>
-        <ul class="collapse list-unstyled" id="pageSubmenu">
-          <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['macroProcesso']">
-              Macro Processo
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" [routerLink]="['home']">
-              Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['organograma/tree']">
-              Organograma
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['processo']">Processo</a>
-          </li>
-        </ul>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="./dashboard.html">
+          <i class="nc-icon nc-chart-pie-35"></i>
+          <p>Dashboard</p>
+        </a>
+      </li> -->
+      <li class="nav-item">
+        <a class="sidebar-nav-link nav-link active" [routerLink]="['home']">
+          <i id="" data-feather="pie-chart"></i>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="sidebar-nav-link nav-link"
+          [routerLink]="['organograma']"
+        >
+          <i id="" data-feather="share-2"></i>
+          Organograma
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="sidebar-nav-link nav-link" [routerLink]="['processo']">
+          <i id="" data-feather="file-minus"></i>
+          Processo
+        </a>
       </li>
 
       <li>
-        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Administração</a>
+        <a
+          href="#homeSubmenu"
+          data-toggle="collapse"
+          aria-expanded="false"
+          class="sidebar-nav-link dropdown-toggle"
+          >Administração</a
+        >
         <ul class="collapse list-unstyled" id="homeSubmenu">
           <li>
-            <a href="#">Cadastrar usuário</a>
+            <a class="sidebar-nav-link nav-link" href="#">
+
+              Cadastrar usuário
+            </a>
           </li>
           <li>
-            <a class="nav-link" [routerLink]="['empresas/lista']">Cadastrar empresa</a>
+            <a
+              class="sidebar-nav-link nav-link"
+              [routerLink]="['empresas/lista']">
+
+              Cadastrar empresa
+            </a>
           </li>
           <li>
-            <a class="nav-link" [routerLink]="['funcionarios']">Cadastrar funcionário</a>
+            <a class="sidebar-nav-link nav-link" [routerLink]="['funcionarios']">
+
+              Cadastrar funcionário
+            </a>
           </li>
         </ul>
       </li>
@@ -54,8 +79,7 @@
   <div id="content">
     <nav class="navbar navbar-expand-lg navbar-top">
       <div class="container-fluid">
-
-        <button type="button" id="sidebarCollapse" class="btn btn-info">
+        <button type="button" id="sidebarCollapse" class="btn btn-rc-orange">
           <i id="sidebarIcon" data-feather="arrow-left"></i>
         </button>
 
@@ -70,7 +94,7 @@
               <div class="profile-wrapper">
                 <a class="nav-link profile-wrapper" href="#">
                   <img src="../assets/avatar/avatar.png" alt="avatar" />
-                
+
                   <div class="profile-details">
                     <label>Nunes</label>
                     <p>Analista de sistemas</p>
@@ -87,14 +111,15 @@
     </nav>
 
     <!-- <div class="notificationBar">
-        Hello Nunes! 
+        Hello Nunes!
     </div> -->
+    <br />
 
     <div class="container">
-      <alert *ngIf="showPendingChanges()" type="warning">
-        <strong>Opa!</strong> parece que você tem alterações pendentes a serem salvas.
+      <!-- <alert type="warning" *ngIf="showAlertChanges">
+        <strong>*</strong> você possui alterações pendentes a serem salvas.
       </alert>
-      <br>
+      <br /> -->
 
       <router-outlet></router-outlet>
     </div>

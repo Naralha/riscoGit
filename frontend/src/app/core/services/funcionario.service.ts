@@ -4,6 +4,16 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+interface IFuncionario {
+  id: number;
+  nome: string;
+  email: string;
+  descricao: string;
+  idEmpresa: number;
+  idUser: number;
+  idOrganograma: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +32,7 @@ export class FuncionarioService {
   }
 
   //Lista de funcionários da empresa
-  getEmployeesByIdEmpresa(idEmpresa) : Promise<Employee[]> {
-    return this.http.get<Employee[]>(`${this.API}/${idEmpresa}`).toPromise();
+  getEmployeesByIdEmpresa(idEmpresa) : Promise<IFuncionario[]> {
+    return this.http.get<IFuncionario[]>(`${this.API}/${idEmpresa}`).toPromise();
   }
 }
