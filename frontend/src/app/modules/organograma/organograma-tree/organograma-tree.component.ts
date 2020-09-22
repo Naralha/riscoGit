@@ -1,30 +1,15 @@
-import { Employee } from './../../../core/model/employee';
 import { Company } from './../../../core/model/company';
-import { Organogram } from './../../../core/model/organogram';
 import { Router } from '@angular/router';
 import { NotificacaoService } from './../../../shared/services/notificacao.service';
 import { SpinnerService } from './../../../shared/services/spinner.service';
 import { FuncionarioService } from '../../../core/services/funcionario.service';
 import { OrganogramaService } from '../../../core/services/organograma.service';
 import { TreeNode } from '../../../core/model/treeNode';
-import {
-  Component,
-  OnInit,
-  EventEmitter,
-  Output,
-  TemplateRef,
-  AfterViewInit,
-  ViewChild,
-  Input,
-} from '@angular/core';
+import { Component, OnInit, TemplateRef, Input } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Messages } from 'src/app/shared/message';
-import { OrganogramaModalFuncionariosComponent } from '../organograma-modal-funcionarios/organograma-modal-funcionarios.component';
-import { Funcionario } from 'src/app/core/model/Funcionario';
 import { Organograma } from 'src/app/core/model/Organograma';
 import { BroadcastService } from 'src/app/core/services/broadcast.service';
-import { error } from 'protractor';
-import { Observable } from 'rxjs';
 declare var $: any;
 
 interface OrganogramaDetails {
@@ -294,9 +279,9 @@ export class OrganogramaTreeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.treeData)
+    console.log(this.treeData);
     const treeDataStorage = localStorage.getItem('@Risco:treeData');
-    if(treeDataStorage) {
+    if (treeDataStorage) {
       this.treeData = JSON.parse(treeDataStorage);
     }
     this.onCreateTree();

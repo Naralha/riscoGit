@@ -38,21 +38,22 @@ body {
 .form-rc-div {
   border-radius: 10px;
   padding: 16px;
-  width: 100%;
+
   border: 2px solid #232129;
   align-items: center;
 }
 
-.form-control {
+.form-rc-input {
   color: #fff;
   background: #232129;
   border: 2px solid #232129;
 }
 
-.form-control:focus {
+.form-rc-input:focus {
   color: #fff;
   border-color: #ffa534;
   background-color: #232129;
   outline: none !important;
   box-shadow: none;
 }
+

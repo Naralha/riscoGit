@@ -1,0 +1,134 @@
+<div class="wrapper bg-light">
+  <!-- Sidebar -->
+  <nav
+    *ngIf="loggedIn"
+    id="sidebar"
+    data-color="orange"
+    data-image="../../../assets/img/sidebar-5.jpg"
+  >
+    <div class="sidebar-header">
+      <h4>Risco Compliance</h4>
+    </div>
+    <ul class="list-unstyled components">
+      <li class="nav-item">
+        <a class="sidebar-nav-link nav-link active" [routerLink]="['home']">
+          <i id="" data-feather="pie-chart"></i>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="sidebar-nav-link nav-link" [routerLink]="['organograma']">
+          <i id="" data-feather="share-2"></i>
+          Organograma
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="sidebar-nav-link nav-link" [routerLink]="['processo']">
+          <i id="" data-feather="file-minus"></i>
+          Processo
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="#homeSubmenu"
+          data-toggle="collapse"
+          aria-expanded="false"
+          class="sidebar-nav-link dropdown-toggle"
+          >Administração</a
+        >
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li>
+            <a class="sidebar-nav-link nav-link" href="#">
+              Cadastrar usuário
+            </a>
+          </li>
+          <li>
+            <a
+              class="sidebar-nav-link nav-link"
+              [routerLink]="['empresas/lista']"
+            >
+              Cadastrar empresa
+            </a>
+          </li>
+          <li>
+            <a
+              class="sidebar-nav-link nav-link"
+              [routerLink]="['funcionarios']"
+            >
+              Cadastrar funcionário
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <div *ngIf="loggedIn" class="content">
+    <nav class="navbar navbar-expand-lg navbar-top">
+      <div class="container-fluid">
+        <button
+          [hidden]="!sideBarIsOpen"
+          (click)="onActiveSidebar()"
+          type="button"
+          class="btn btn-rc-orange"
+        >
+          <i id="sidebarIcon" data-feather="arrow-left"></i>
+        </button>
+
+        <button
+          [hidden]="sideBarIsOpen"
+          (click)="onActiveSidebar()"
+          type="button"
+          class="btn btn-rc-orange"
+        >
+          <i id="sidebarIcon" data-feather="arrow-right"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i id="sidebarIcon" data-feather="bell"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <div class="dropdown profile-wrapper">
+                <a
+                  class="nav-link profile-wrapper"
+                  href="#"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <img src="../assets/avatar/avatar.png" alt="avatar" />
+
+                  <div class="profile-details">
+                    <label>Nunes</label>
+                    <p>Analista de sistemas</p>
+                  </div>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <p>Informações do usuário</p>
+                </div>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/login']">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <br />
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div *ngIf="!loggedIn" id="loginContent" class="content">
+    <app-auth></app-auth>
+  </div>
+</div>
