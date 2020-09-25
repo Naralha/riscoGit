@@ -1,0 +1,15 @@
+.inputValueBoxCard {
+  background-color: #232129;
+  margin-top: 10px;
+  min-height: 152px;
+}
+
+.card-body > ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+}
+
+select {
+  margin-bottom: 17px;
+}

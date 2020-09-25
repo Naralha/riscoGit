@@ -5,6 +5,7 @@ import { FormDebugComponent } from './form-debug/form-debug.component';
 import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
 import { ModalEmployeeListComponent } from './modal-employee-list/modal-employee-list.component';
 import { CustomListboxComponent } from './custom-listbox/custom-listbox.component';
+import { InputValueBoxComponent } from './input-value-box/input-value-box.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { CustomListboxComponent } from './custom-listbox/custom-listbox.componen
     CampoControlErroComponent,
     ModalEmployeeListComponent,
     CustomListboxComponent,
+    InputValueBoxComponent,
   ],
   imports: [
     FormsModule,
@@ -24,7 +26,8 @@ import { CustomListboxComponent } from './custom-listbox/custom-listbox.componen
     FormDebugComponent,
     CampoControlErroComponent,
     ModalEmployeeListComponent,
-    CustomListboxComponent
+    CustomListboxComponent,
+    InputValueBoxComponent
   ]
 })
 export class SharedModule { }

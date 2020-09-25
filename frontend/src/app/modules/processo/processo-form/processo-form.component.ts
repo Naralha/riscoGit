@@ -12,6 +12,7 @@ import { Messages } from 'src/app/shared/message';
 import { OrganogramaService } from 'src/app/core/services/organograma.service';
 import { Observable } from 'rxjs';
 import { Organogram } from 'src/app/core/model/organogram';
+import { MacroProcessoService } from 'src/app/core/services/macro-processo.service';
 
 @Component({
   selector: 'app-processo-form',
@@ -24,6 +25,13 @@ export class ProcessoFormComponent implements OnInit {
   source: string[] = [];
   confirmed = [];
   showForm: boolean = false;
+  macroProcessoList: string[];
+  macroProcessoList$: Observable<[]>;
+
+  clientesInternos: string[] = [];
+  clientesExternos: string[] = [];
+  fornecedoresInternos: string[] = [];
+  fornecedoresExternos: string[] = [];
 
   format = {
     add: 'Adicionar',
@@ -57,7 +65,8 @@ export class ProcessoFormComponent implements OnInit {
     private organogramaService: OrganogramaService,
     private notify: NotificacaoService,
     private renderer: Renderer2,
-    private el: ElementRef
+    private el: ElementRef,
+    private macroProcessoService: MacroProcessoService
   ) {}
 
   onSubmit() {
@@ -86,6 +95,8 @@ export class ProcessoFormComponent implements OnInit {
       internalClients: [this.confirmed, Validators.required],
       inputs: [null],
       externalClientes: [null, Validators.required],
+      internalProviders: [null],
+      externalProviders: [null],
       limitrofeStart: [null],
       limitrofeEnd: [null],
       internalCompliance: [null],
@@ -96,8 +107,7 @@ export class ProcessoFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.onConfigProcessoForm();
+  onOrganogramalist() {
     this.organogramaService.getOrganogramaList(1).subscribe(
       (response) => {
         if (response.length === 0) {
@@ -113,6 +123,20 @@ export class ProcessoFormComponent implements OnInit {
       (error) =>
         this.notify.showError(error, 'Erro ao obter os dados do formulário.')
     );
+  }
+
+  onMacroProcessoList() {
+    this.macroProcessoList$ = this.macroProcessoService.listByCompanyId(1);
+  }
+
+  onValueInserted(value: string, propertyName: string) {
+    this[propertyName].push(value);
+  }
+
+  ngOnInit(): void {
+    this.onConfigProcessoForm();
+    this.onOrganogramalist();
+    this.onMacroProcessoList();
   }
 
   onChangeButtonsStyles(): void {}

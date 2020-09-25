@@ -10,6 +10,10 @@
   margin-right: 15px;
 }
 
+:host ::ng-deep .record-picker {
+  background-color: #232129 !important;
+}
+
 :host ::ng-deep div.record-picker::-webkit-scrollbar-thumb {
   background: #ffa534 !important;
   border-style: none !important;
@@ -70,3 +74,4 @@
 :host ::ng-deep .btn-default {
   margin-left: 17.5px;
 }
+

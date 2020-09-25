@@ -1,0 +1,51 @@
+<div
+  class="input-group-sm input-group mb-3"
+  *ngIf="selectOptionValues.length === 0"
+>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="{{ placeHolderName }}"
+    aria-describedby="basic-addon2"
+    [(ngModel)]="ngModelValue"
+  />
+  <div class="input-group-append">
+    <button class="btn input-group-text" (click)="onAddValue(ngModelValue)">
+      +
+    </button>
+  </div>
+</div>
+
+<select
+  *ngIf="selectOptionValues.length"
+  class="form-control form-control-sm"
+  (change)="onAddValue($event.target.value)"
+>
+  <option value="0">{{ placeHolderName }}...</option>
+  <option *ngFor="let value of selectOptionValues" [value]="value">
+    {{ value }}
+  </option>
+</select>
+
+<div class="card inputValueBoxCard">
+  <div class="card-body">
+    <ul *ngIf="listValues as values">
+      <li *ngFor="let value of values">
+        {{ value }}
+      </li>
+    </ul>
+    <p
+      *ngIf="listValues.length === 0"
+      style="text-align: center; font-style: italic"
+    >
+      {{ placeHolderName }}.
+    </p>
+  </div>
+  <button
+    [disabled]="listValues.length === 0"
+    class="btn"
+    (click)="onClearValues()"
+  >
+    Limpar
+  </button>
+</div>
