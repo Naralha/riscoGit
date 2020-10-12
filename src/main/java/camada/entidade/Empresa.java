@@ -3,13 +3,12 @@ package camada.entidade;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
 import javax.persistence.*;
-
 import camada.dao.Dao;
+import camada.exceptions.EntityNotFoundException;
+import camada.exceptions.EntityWithoutRegistrationInDatabaseException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -18,6 +17,7 @@ import lombok.Setter;
 public class Empresa extends Dao {
 
     @Id
+    @NonNull
     @PrimaryKeyJoinColumn
     @Column(name = "id_nVarEmpresa", nullable = false)
     private Long id;
@@ -32,6 +32,12 @@ public class Empresa extends Dao {
     @OneToMany(mappedBy = "empresa")
     private Set<Organograma> organogramas;
 
+    public Empresa(Long id) {
+        this.id = id;
+    }
+
+    public Empresa() {}
+
     public void salvar() {
         iniciarOperacao();
         this.setId(sequence());
@@ -41,9 +47,11 @@ public class Empresa extends Dao {
 
     public List<Empresa> findAll() {
         iniciarOperacao();
-        List<Empresa> listaEmpresas = new ArrayList<Empresa>();
-        listaEmpresas = session.createQuery("SELECT a FROM Empresa a", Empresa.class).getResultList();
+        List<Empresa> listaEmpresas = session.createQuery("SELECT a FROM Empresa a", Empresa.class).getResultList();
         finalizarOperacao();
+        if(listaEmpresas.isEmpty()) {
+            throw new EntityWithoutRegistrationInDatabaseException(Empresa.class);
+        }
         return listaEmpresas;
     }
 
@@ -70,13 +78,11 @@ public class Empresa extends Dao {
     public Empresa findById() {
         iniciarOperacao();
         try {
-            Empresa empresa = session
+            return session
                     .createQuery("SELECT a FROM Empresa a Where a.id ='" + this.id + "'", Empresa.class)
                     .getSingleResult();
-            return empresa;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
+        } catch (NoResultException e) {
+            throw new EntityNotFoundException(Empresa.class, "id", this.getId().toString());
         } finally {
             finalizarOperacao();
         }

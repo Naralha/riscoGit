@@ -5,6 +5,7 @@ import java.util.*;
 import javax.persistence.*;
 
 import camada.dao.Dao;
+import camada.exceptions.EntityNotFoundException;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
@@ -77,9 +78,14 @@ public class Organograma extends Dao {
 
         iniciarOperacao();
 
-        List<Organograma> listaOrganograma = session.createQuery("SELECT a FROM Organograma a Where a.empresa ='" + this.empresa.getId() + "'", Organograma.class).getResultList();
+        List<Organograma> listaOrganograma = session.createQuery("SELECT a FROM Organograma a Where a.empresa ='"
+                + this.empresa.getId() + "'", Organograma.class).getResultList();
 
         finalizarOperacao();
+
+        if (listaOrganograma.isEmpty()) {
+            throw new EntityNotFoundException(Organograma.class, "id", this.empresa.getId().toString());
+        }
 
         return listaOrganograma;
     }
@@ -92,11 +98,11 @@ public class Organograma extends Dao {
         List<Organograma> listaOrganogramas = new ArrayList<Organograma>();
         listaOrganogramas = session.createQuery("SELECT a FROM Organograma a where a.idPaiOrganograma ='" + this.id + "'", Organograma.class).getResultList();
 
-        //Se tiver filho, o usuario deve alterar na mão.
+        //Se tiver filho, o usuario deve alterar na mï¿½o.
         if (listaOrganogramas.isEmpty()) {
             Organograma organograma = (Organograma) session.load(Organograma.class, this.id);
 
-//			o usuário tem a chance de escolher se quer deletar mesmo com funcionario associado.
+//			o usuï¿½rio tem a chance de escolher se quer deletar mesmo com funcionario associado.
             if (!organograma.getFuncionarios().isEmpty()) {
                 finalizarOperacao();
                 return "Existe funcionario associado.";
